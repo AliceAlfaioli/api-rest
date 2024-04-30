@@ -169,33 +169,23 @@ const ArticleList = () => {
     <>
       <Navbar />
 
+      <img src={"https://www.falkenstein.bz/wp-content/uploads/header-weine.jpg"} alt="" />
+
       <div className="container">
         <h1 className="mt-5 mb-4">𝓡𝓲𝓼𝓬𝓸𝓹𝓻𝓲 𝓲𝓵 𝓹𝓲𝓪𝓬𝓮𝓻𝓮 𝓭𝓮𝓵 𝓿𝓲𝓷𝓸🍷🍇</h1>
         <div className="text-center mt-3">
-          <Button className="mt-5 mb-5" variant="success" onClick={() => setShowAddModal(true)}>
-            Aggiungi Nuovo Articolo
+          <Button className="mt-5 mb-5" variant="warning" onClick={() => setShowAddModal(true)}>
+            Aggiungi Articolo
           </Button>
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <div className="mb-3">
-          <input
-            type="text"
-            className="form-control mt"
-            placeholder="Cerca per titolo..."
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-        </div>
+
         <div className="row">
           {currentArticles.map((article) => (
             <div key={article.id} className="col-xs-6 col-md-6 col-lg-4 mb-4">
               <div className="card">
                 <img
-                  src={
-                    article._embedded["wp:featuredmedia"]
-                      ? article._embedded["wp:featuredmedia"][0].source_url
-                      : "https://us.123rf.com/450wm/photobuay/photobuay2305/photobuay230500379/204265503-romantica-degustazione-di-vini-in-vigna-due-calici-di-vino-rosso-con-vista-panoramica-ai.jpg?ver=6"
-                  }
+                  src={article._embedded["wp:featuredmedia"] ? article._embedded["wp:featuredmedia"][0].source_url : ""}
                   className="card-img-top"
                   alt=""
                 />
@@ -208,11 +198,11 @@ const ArticleList = () => {
                     Elimina
                   </button>
                   <div>
-                    <button className="btn btn-primary mr-2" onClick={() => openModal(article)}>
+                    <button className="btn btn-success mr-2" onClick={() => openModal(article)}>
                       Visualizza
                     </button>
                     <button
-                      className="btn btn-secondary"
+                      className="btn btn-primary"
                       onClick={() => {
                         setEditArticleTitle(article.title.rendered);
                         setEditArticleContent(article.content.rendered);
