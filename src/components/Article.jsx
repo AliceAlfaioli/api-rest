@@ -15,7 +15,7 @@ const ArticleList = () => {
   const [editArticleTitle, setEditArticleTitle] = useState("");
   const [editArticleContent, setEditArticleContent] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(4);
+  const [articlesPerPage] = useState(10);
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -170,7 +170,7 @@ const ArticleList = () => {
       <Navbar />
 
       <div className="container">
-        <h1 className="mt-5 mb-4">Riscopri il piacere del vino</h1>
+        <h1 className="mt-5 mb-4">𝓡𝓲𝓼𝓬𝓸𝓹𝓻𝓲 𝓲𝓵 𝓹𝓲𝓪𝓬𝓮𝓻𝓮 𝓭𝓮𝓵 𝓿𝓲𝓷𝓸🍷🍇</h1>
         <div className="text-center mt-3">
           <Button className="mt-5 mb-5" variant="success" onClick={() => setShowAddModal(true)}>
             Aggiungi Nuovo Articolo
@@ -194,7 +194,7 @@ const ArticleList = () => {
                   src={
                     article._embedded["wp:featuredmedia"]
                       ? article._embedded["wp:featuredmedia"][0].source_url
-                      : "https://cdn.pixabay.com/photo/2016/10/22/20/34/wines-1761613_1280.jpg"
+                      : "https://us.123rf.com/450wm/photobuay/photobuay2305/photobuay230500379/204265503-romantica-degustazione-di-vini-in-vigna-due-calici-di-vino-rosso-con-vista-panoramica-ai.jpg?ver=6"
                   }
                   className="card-img-top"
                   alt=""
