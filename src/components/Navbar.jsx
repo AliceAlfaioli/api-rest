@@ -1,11 +1,23 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
-const Navbar = () => {
+function ColorSchemesExample() {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-    </nav>
+    <>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">Vini Toscani 🍇 </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Info</Nav.Link>
+            <Nav.Link href="#features">About</Nav.Link>
+            <Nav.Link href="#pricing">Contatti</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    </>
   );
-};
+}
 
-export default Navbar;
+export default ColorSchemesExample;

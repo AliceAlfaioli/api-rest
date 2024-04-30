@@ -1,17 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Navbar from "./components/Navbar";
-import PostDetails from "./components/PostDetails";
-
+import "./App.css";
+import ArticleList from "./components/Article";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./components/index.css";
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/posts/:id" element={<PostDetails />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App">
+      <ArticleList></ArticleList>
+    </div>
   );
 }
 
