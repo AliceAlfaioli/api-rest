@@ -39,7 +39,7 @@ const ArticleList = () => {
     try {
       const authString = "Ali:x6uc MZe3 VC7t ReOa fBQV t3AT";
       const encodedAuthString = btoa(authString);
-      const response = await fetch(`http://localhost/wp-first//wp-json/wp/v2/posts{postId}`, {
+      const response = await fetch(`http://localhost/wp-first//wp-json/wp/v2/posts/${postId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -153,11 +153,15 @@ const ArticleList = () => {
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    setCurrentPage(1);
   };
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  const filteredArticles = articles.filter((article) =>
+    article.title.rendered.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const currentArticles = filteredArticles.slice(indexOfFirstArticle, indexOfLastArticle);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -184,7 +188,7 @@ const ArticleList = () => {
         </div>
         <div className="row">
           {currentArticles.map((article) => (
-            <div key={article.id} className="col-md-6 mb-4">
+            <div key={article.id} className="col-xs-6 col-md-6 col-lg-4 mb-4">
               <div className="card">
                 <img
                   src={
@@ -226,7 +230,7 @@ const ArticleList = () => {
         </div>
         <nav>
           <ul className="pagination justify-content-center">
-            {[...Array(Math.ceil(articles.length / articlesPerPage)).keys()].map((number) => (
+            {[...Array(Math.ceil(filteredArticles.length / articlesPerPage)).keys()].map((number) => (
               <li key={number} className="page-item">
                 <button onClick={() => paginate(number + 1)} className="page-link">
                   {number + 1}
